@@ -41,11 +41,19 @@
           <key>Hour</key>
           <integer>14</integer>
           <key>Minute</key>
-          <integer>20</integer>
+          <integer>30</integer>
+      </dict>
+      <dict>
+          <key>Weekday</key>
+          <integer>3</integer>
           <key>Hour</key>
           <integer>14</integer>
           <key>Minute</key>
-          <integer>30</integer>
+          <integer>40</integer>
+      </dict>
+      <dict>
+          <key>Weekday</key>
+          <integer>3</integer>
           <key>Hour</key>
           <integer>15</integer>
           <key>Minute</key>
