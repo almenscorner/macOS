@@ -39,17 +39,17 @@
           <key>Weekday</key>
           <integer>3</integer>
           <key>Hour</key>
-          <integer>13</integer>
+          <integer>14</integer>
+          <key>Minute</key>
+          <integer>20</integer>
+          <key>Hour</key>
+          <integer>14</integer>
+          <key>Minute</key>
+          <integer>30</integer>
+          <key>Hour</key>
+          <integer>15</integer>
           <key>Minute</key>
           <integer>0</integer>
-          <key>Hour</key>
-          <integer>14</integer>
-          <key>Minute</key>
-          <integer>00</integer>
-          <key>Hour</key>
-          <integer>14</integer>
-          <key>Minute</key>
-          <integer>10</integer>
       </dict>
   </array>
 </dict>
