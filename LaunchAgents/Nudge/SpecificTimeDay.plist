@@ -23,9 +23,9 @@
       <key>Hour</key>
       <integer>10</integer>
       <key>Minute</key>
-      <integer>43</integer>
+      <integer>50</integer>
       <key>Weekday</key>
-      <integer>4</integer>
+      <integer>3</integer>
     </dict>
   </array>
 </dict>
