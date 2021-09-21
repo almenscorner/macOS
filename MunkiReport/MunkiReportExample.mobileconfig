@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadIdentifier</key>
+	<string>A979DD74-19F6-11EC-9621-0242AC130002</string>
+	<key>PayloadRemovalDisallowed</key>
+	<true/>
+	<key>PayloadScope</key>
+	<string>System</string>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>A979DD74-19F6-11EC-9621-0242AC130002</string>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+            <key>Passphrase</key>
+            <string>PASSPHRASE</string>
+			<key>PayloadDisplayName</key>
+			<string>MunkiReport config</string>
+			<key>PayloadEnabled</key>
+			<true/>
+			<key>PayloadIdentifier</key>
+			<string>9C0F6032-19F6-11EC-9621-0242AC130002</string>
+			<key>PayloadOrganization</key>
+			<string>Almens365</string>
+			<key>PayloadType</key>
+			<string>MunkiReport</string>
+			<key>PayloadUUID</key>
+			<string>9C0F6032-19F6-11EC-9621-0242AC130002</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+</dict>
+</plist>
