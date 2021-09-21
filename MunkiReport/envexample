@@ -25,7 +25,7 @@ CONNECTION_ENGINE="InnoDB"
 # SSL
 # ------
 CONNECTION_SSL_ENABLED=TRUE
-CONNECTION_SSL_CERT='home/sites/munkireport-php/ssl/BaltimoreCyberTrustRoot.crt.pem'
+CONNECTION_SSL_CERT='home/site/munkireport/ssl/BaltimoreCyberTrustRoot.crt.pem'
 
 
 # INDEX_PAGE
