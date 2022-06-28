@@ -168,15 +168,6 @@
             "defaultValue": "/subscriptions/133a237e-6c70-4676-a8a8-9d4a60467b4e/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default"
         }
     },
-    "variables": {
-        "subscriptionId": "[subscription().subscriptionId]",
-        "resourceGroupName": "[resourceGroup().name]",
-        "subnetPoliciesTemplateName": "[concat('SubnetPolicies-', if(parameters('enablePrivateEndpoint'), parameters('privateEndpointNestedTemplateId'), ''))]",
-        "privateEndpointTemplateName": "[concat('PrivateEndpoint-', if(parameters('enablePrivateEndpoint'), parameters('privateEndpointNestedTemplateId'), ''))]",
-        "deploymentTemplateApi": "2018-05-01",
-        "privateEndpointApi": "2019-04-01",
-        "StorageBlobContributor": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe')]"
-    },
     "resources": [
         /*DB*/
         {
@@ -418,7 +409,7 @@
                     ]
                 }
             },
-        }
+        },
         /*REGISTRY*/
         {
             "name": "[parameters('registryName')]",
@@ -533,5 +524,13 @@
             }
         }
     ],
-
+    "variables": {
+        "subscriptionId": "[subscription().subscriptionId]",
+        "resourceGroupName": "[resourceGroup().name]",
+        "subnetPoliciesTemplateName": "[concat('SubnetPolicies-', if(parameters('enablePrivateEndpoint'), parameters('privateEndpointNestedTemplateId'), ''))]",
+        "privateEndpointTemplateName": "[concat('PrivateEndpoint-', if(parameters('enablePrivateEndpoint'), parameters('privateEndpointNestedTemplateId'), ''))]",
+        "deploymentTemplateApi": "2018-05-01",
+        "privateEndpointApi": "2019-04-01",
+        "StorageBlobContributor": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe')]"
+    }
 }
