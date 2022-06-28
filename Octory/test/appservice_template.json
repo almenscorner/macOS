@@ -278,7 +278,7 @@
                         }
                     ]
                 }
-            },
+            }
         },
         {
             "condition": "[parameters('enablePrivateEndpoint')]",
@@ -309,7 +309,7 @@
                     "contentVersion": "1.0.0.0",
                     "uri": "[parameters('privateEndpointTemplateLink')]"
                 }
-            },
+            }
         },
         {
             "type": "Microsoft.Resources/deployments",
@@ -408,7 +408,7 @@
                         }
                     ]
                 }
-            },
+            }
         },
         /*REGISTRY*/
         {
