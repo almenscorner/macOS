@@ -2,535 +2,138 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        /*APP SERVICE PARAMS*/
-        "subscriptionId": {
-            "type": "string"
-        },
-        "name": {
+        "IntuneCDName": {
             "type": "string",
-            "defaultValue": "IntuneCD-{your_name}"
+            "minLength": 1
         },
-        "location": {
-            "type": "string"
-        },
-        "hostingPlanName": {
-            "type": "string"
-        },
-        "serverFarmResourceGroup": {
-            "type": "string"
-        },
-        "alwaysOn": {
-            "type": "bool",
-            "defaultValue": false
-        },
-        "linuxFxVersion": {
+        "IntuneCDSKU": {
             "type": "string",
-            "defaultValue": "COMPOSE|dmVyc2lvbjogIjMuOCIKCnNlcnZpY2VzOgoKICB3ZWI6CiAgICBpbWFnZToge3lvdXJfcmVnaXN0cnlfbmFtZX0uYXp1cmVjci5pby9pbnR1bmVjZC1mcm9udGVuZF93ZWI6bGF0ZXN0CiAgICByZXN0YXJ0OiBhbHdheXMKICAgIGNvbW1hbmQ6IGd1bmljb3JuIC0tYmluZCAwLjAuMC4wOjgwODAgLS10aHJlYWRzIDEwIHJ1bjphcHAKICAgIGV4cG9zZToKICAgICAgLSA4MDgwOjgwODAKICAKICBuZ2lueDoKICAgIGltYWdlOiB7eW91cl9yZWdpc3RyeV9uYW1lfS5henVyZWNyLmlvL2ludHVuZWNkLWZyb250ZW5kX25naW54OmxhdGVzdAogICAgcmVzdGFydDogYWx3YXlzCiAgICBjb21tYW5kOiBbIi9iaW4vc2giLCAiLWMiLCAiZW52c3Vic3QgPCAvZXRjL25naW54L2NvbmYuZC9uZ2lueC5jb25mLnRlbXBsYXRlID4gL2V0Yy9uZ2lueC9jb25mLmQvbmdpbnguY29uZiAmJiBleGVjIG5naW54IC1nICdkYWVtb24gb2ZmOyciXQogICAgcG9ydHM6CiAgICAgIC0gODA6ODA="
+            "allowedValues": [
+                "Free",
+                "Shared",
+                "Basic",
+                "Standard"
+            ],
+            "defaultValue": "Free"
         },
-        "dockerRegistryUrl": {
+        "IntuneCDWorkerSize": {
             "type": "string",
-            "defaultValue": "https://icd-registry.azurecr.io"
+            "allowedValues": [
+                "0",
+                "1",
+                "2"
+            ],
+            "defaultValue": "0"
         },
-/*         "dockerRegistryUsername": {
+        "IntuneCDdbName": {
             "type": "string",
-            "metadata": {
-                "description": "The username to use for the Docker registry"
-            }
+            "minLength": 1
         },
-        "dockerRegistryPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "The password to use for the Docker registry"
-            }
-        },
-        "dockerRegistryStartupCommand": {
+        "IntuneCDdbCollation": {
             "type": "string",
-            "required": false
-        }, */
-        /*REGISTRY PARAMS*/
-        "registryName": {
-            "type": "string",
-            "defaultValue": "icd-registry"
-        },
-        "registryLocation": {
-            "type": "string"
-        },
-        "zoneRedundancy": {
-            "type": "string",
-            "defaultValue": "Disabled"
-        },
-        "registrySku": {
-            "type": "string",
-            "defaultValue": "Standard"
-        },
-        "registryApiVersion": {
-            "type": "string",
-            "defaultValue": "2017-06-01"
-        },
-        "publicNetworkAccess": {
-            "type": "string",
-            "defaultValue": "Enabled"
-        },
-        /*DB PARAMS*/
-        "collation": {
-            "type": "string",
+            "minLength": 1,
             "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
         },
-        "databaseName": {
+        "IntuneCDdbEdition": {
             "type": "string",
-            "defaultValue": "IntuneCDdb"
+            "defaultValue": "Basic",
+            "allowedValues": [
+                "Basic",
+                "Standard",
+                "Premium"
+            ]
         },
-        "tier": {
+        "IntuneCDdbRequestedServiceObjectiveName": {
             "type": "string",
-            "defaultValue": "Standard"
-        },
-        "skuName": {
-            "type": "string",
-            "defaultValue": "S0"
-        },
-        "maxSizeBytes": {
-            "type": "int",
-            "defaultValue": 268435456000
-        },
-        "serverName": {
-            "type": "string",
-            "defaultValue": "IntuneCDdb"
-        },
-        "zoneRedundant": {
-            "type": "bool",
-            "defaultValue": false
-        },
-        "readScaleOut": {
-            "type": "string",
-            "defaultValue": "Disabled"
-        },
-        "numberOfReplicas": {
-            "type": "int",
-            "defaultValue": 0
-        },
-        "enableADS": {
-            "type": "bool",
-            "defaultValue": false
-        },
-        "enableVA": {
-            "type": "bool",
-            "defaultValue": false
-        },
-        "useVAManagedIdentity": {
-            "type": "bool",
-            "defaultValue": false,
+            "defaultValue": "Basic",
+            "allowedValues": [
+                "Basic",
+                "S0",
+                "S1",
+                "S2",
+                "P1",
+                "P2",
+                "P3"
+            ],
             "metadata": {
-                "description": "To enable vulnerability assessments, the user deploying this template must have an administrator or owner permissions."
+                "description": "Describes the performance level for Edition"
             }
         },
-        "enablePrivateEndpoint": {
-            "type": "bool",
-            "defaultValue": false
-        },
-        "privateEndpointNestedTemplateId": {
+        "IntuneCDdbAdminLogin": {
             "type": "string",
-            "defaultValue": "pe-9ef7ed6d-c7d1-4d6c-9d3e-c6e2b3f8700e"
+            "minLength": 1
         },
-        "enablePrivateDnsZone": {
-            "type": "bool",
-            "defaultValue": true
-        },
-        "privateLinkPrivateDnsZoneFQDN": {
-            "type": "string",
-            "defaultValue": "privatelink.database.windows.net"
-        },
-        "privateEndpointDnsRecordUniqueId": {
-            "type": "string",
-            "defaultValue": "9ef7ed6d-c7d1-4d6c-9d3e-c6e2b3f8700f"
-        },
-        "privateEndpointTemplateLink": {
-            "type": "string",
-            "defaultValue": "https://sqlazureextension.hosting.portal.azure.net/sqlazureextension/Content/2.1.01986243/DeploymentTemplates/PrivateEndpoint.json"
-        },
-        "privateDnsForPrivateEndpointTemplateLink": {
-            "type": "string",
-            "defaultValue": "https://sqlazureextension.hosting.portal.azure.net/sqlazureextension/Content/2.1.01986243/DeploymentTemplates/PrivateDnsForPrivateEndpoint.json"
-        },
-        "privateDnsForPrivateEndpointNicTemplateLink": {
-            "type": "string",
-            "defaultValue": "https://sqlazureextension.hosting.portal.azure.net/sqlazureextension/Content/2.1.01986243/DeploymentTemplates/PrivateDnsForPrivateEndpointNic.json"
-        },
-        "privateDnsForPrivateEndpointIpConfigTemplateLink": {
-            "type": "string",
-            "defaultValue": "https://sqlazureextension.hosting.portal.azure.net/sqlazureextension/Content/2.1.01986243/DeploymentTemplates/PrivateDnsForPrivateEndpointIpConfig.json"
-        },
-        "requestedBackupStorageRedundancy": {
-            "type": "string",
-            "defaultValue": "Geo"
-        },
-        "maintenanceConfigurationId": {
-            "type": "string",
-            "defaultValue": "/subscriptions/133a237e-6c70-4676-a8a8-9d4a60467b4e/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default"
+        "IntuneCDdbAdminLoginPassword": {
+            "type": "securestring"
         }
     },
     "resources": [
-        /*DB*/
         {
-            "condition": "[and(parameters('enableVA'), parameters('useVAManagedIdentity'))]",
-            "type": "Microsoft.Sql/servers",
-            "apiVersion": "2019-06-01-preview",
-            "name": "[parameters('serverName')]",
-            "identity": {
-                "type": "SystemAssigned"
+            "name": "[parameters('IntuneCDName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2014-06-01",
+            "dependsOn": [],
+            "tags": {
+                "displayName": "IntuneCD"
+            },
+            "properties": {
+                "name": "[parameters('IntuneCDName')]",
+                "sku": "[parameters('IntuneCDSKU')]",
+                "workerSize": "[parameters('IntuneCDWorkerSize')]",
+                "numberOfWorkers": 1
             }
         },
         {
-            "condition": "[parameters('enableVA')]",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-04-01",
-            "sku": {
-                "name": "Standard_LRS"
+            "name": "[variables('fullyQualifiedIntuneCDdbName')]",
+            "type": "Microsoft.Sql/servers/databases",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2014-04-01-preview",
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', variables('IntuneCDdbName'))]"
+            ],
+            "tags": {
+                "displayName": "IntuneCDdb"
             },
-            "kind": "StorageV2",
             "properties": {
-                "minimumTlsVersion": "TLS1_2",
-                "supportsHttpsTrafficOnly": "true",
-                "allowBlobPublicAccess": "false"
+                "collation": "[parameters('IntuneCDdbCollation')]",
+                "edition": "[parameters('IntuneCDdbEdition')]",
+                "maxSizeBytes": "1073741824",
+                "requestedServiceObjectiveName": "[parameters('IntuneCDdbRequestedServiceObjectiveName')]"
+            }
+        },
+        {
+            "name": "[variables('IntuneCDdbName')]",
+            "type": "Microsoft.Sql/servers",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2014-04-01-preview",
+            "dependsOn": [],
+            "tags": {
+                "displayName": "IntuneCDdb"
+            },
+            "properties": {
+                "administratorLogin": "[parameters('IntuneCDdbAdminLogin')]",
+                "administratorLoginPassword": "[parameters('IntuneCDdbAdminLoginPassword')]"
             },
             "resources": [
                 {
-                    "condition": "[parameters('useVAManagedIdentity')]",
-                    "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
-                    "apiVersion": "2018-09-01-preview",
+                    "name": "AllowAllWindowsAzureIps",
+                    "type": "firewallrules",
+                    "location": "[resourceGroup().location]",
+                    "apiVersion": "2014-04-01-preview",
                     "dependsOn": [
-                        "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
+                        "[concat('Microsoft.Sql/servers/', variables('IntuneCDdbName'))]"
                     ],
                     "properties": {
-                        "roleDefinitionId": "[variables('StorageBlobContributor')]",
-                        "principalId": "[reference(resourceId('Microsoft.Sql/servers', parameters('serverName')), '2018-06-01-preview', 'Full').identity.principalId]",
-                        "principalType": "ServicePrincipal"
+                        "startIpAddress": "0.0.0.0",
+                        "endIpAddress": "0.0.0.0"
                     }
                 }
             ]
-        },
-        {
-            "type": "Microsoft.Sql/servers/databases",
-            "apiVersion": "2021-02-01-preview",
-            "name": "[concat(parameters('serverName'), '/', parameters('databaseName'))]",
-            "properties": {
-                "collation": "[parameters('collation')]",
-                "maxSizeBytes": "[parameters('maxSizeBytes')]",
-                "zoneRedundant": "[parameters('zoneRedundant')]",
-                "readScale": "[parameters('readScaleOut')]",
-                "highAvailabilityReplicaCount": "[parameters('numberOfReplicas')]",
-                "requestedBackupStorageRedundancy": "[parameters('requestedBackupStorageRedundancy')]",
-                "maintenanceConfigurationId": "[parameters('maintenanceConfigurationId')]"
-            },
-            "sku": {
-                "name": "[parameters('skuName')]",
-                "tier": "[parameters('tier')]"
-            }
-        },
-        {
-            "condition": "[parameters('enableADS')]",
-            "apiVersion": "2017-03-01-preview",
-            "type": "Microsoft.Sql/servers/securityAlertPolicies",
-            "name": "[concat(parameters('serverName'), '/Default')]",
-            "dependsOn": [
-                "[concat('Microsoft.Sql/servers/', parameters('serverName'), '/databases/', parameters('databaseName'))]"
-            ],
-            "properties": {
-                "state": "Enabled",
-                "disabledAlerts": [],
-                "emailAddresses": [],
-                "emailAccountAdmins": true
-            }
-        },
-        {
-            "condition": "[parameters('enableVA')]",
-            "apiVersion": "2018-06-01-preview",
-            "type": "Microsoft.Sql/servers/vulnerabilityAssessments",
-            "name": "[concat(parameters('serverName'), '/Default')]",
-            "properties": {
-                "recurringScans": {
-                    "isEnabled": true,
-                    "emailSubscriptionAdmins": true,
-                    "emails": []
-                }
-            },
-            "dependsOn": [
-                "[concat('Microsoft.Sql/servers/', parameters('serverName'), '/databases/', parameters('databaseName'))]",
-                "[concat('Microsoft.Sql/servers/', parameters('serverName'), '/securityAlertPolicies/Default')]"
-            ]
-        },
-        {
-            "condition": "[parameters('enablePrivateEndpoint')]",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "[variables('deploymentTemplateApi')]",
-            "name": "[variables('subnetPoliciesTemplateName')]",
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "resources": [
-                        {
-                            "apiVersion": "[variables('privateEndpointApi')]",
-                            "properties": {
-                                "privateEndpointNetworkPolicies": "Disabled"
-                            },
-                            "type": "Microsoft.Network/virtualNetworks/subnets"
-                        }
-                    ]
-                }
-            }
-        },
-        {
-            "condition": "[parameters('enablePrivateEndpoint')]",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "[variables('deploymentTemplateApi')]",
-            "name": "[variables('privateEndpointTemplateName')]",
-            "dependsOn": [
-                "[resourceId(variables('subscriptionId'), variables('resourceGroupName'), 'Microsoft.Sql/servers/databases/', parameters('serverName'), parameters('databaseName'))]",
-                "[variables('subnetPoliciesTemplateName')]"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "parameters": {
-                    "privateEndpointConnectionId": {
-                        "value": ""
-                    },
-                    "privateEndpointApiVersion": {
-                        "value": "[variables('privateEndpointApi')]"
-                    },
-                    "groupId": {
-                        "value": "SqlServer"
-                    },
-                    "tags": {
-                        "value": {}
-                    }
-                },
-                "templatelink": {
-                    "contentVersion": "1.0.0.0",
-                    "uri": "[parameters('privateEndpointTemplateLink')]"
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2019-05-01",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]",
-                "[concat('Microsoft.Sql/servers/', parameters('serverName'), '/databases/', parameters('databaseName'))]"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "parameters": {
-                    "serverName": {
-                        "value": "[parameters('serverName')]"
-                    },
-                    "databaseName": {
-                        "value": "[parameters('databaseName')]"
-                    }
-                },
-                "templateLink": {
-                    "contentVersion": "1.0.0.0"
-                }
-            },
-            "subscriptionId": "[variables('subscriptionId')]",
-            "resourceGroup": "[ variables('resourceGroupName')]"
-        },
-        {
-            "condition": "[and(parameters('enablePrivateEndpoint'), parameters('enablePrivateDnsZone'))]",
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "[variables('deploymentTemplateApi')]",
-            "name": "[concat('PrivateDns-', parameters('privateEndpointNestedTemplateId'))]",
-            "dependsOn": [
-                "[variables('privateEndpointTemplateName')]"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "template": {
-                    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-                    "contentVersion": "1.0.0.0",
-                    "resources": [
-                        {
-                            "type": "Microsoft.Network/privateDnsZones",
-                            "apiVersion": "2018-09-01",
-                            "name": "[parameters('privateLinkPrivateDnsZoneFQDN')]",
-                            "location": "global",
-                            "tags": {},
-                            "properties": {}
-                        },
-                        {
-                            "type": "Microsoft.Network/privateDnsZones/virtualNetworkLinks",
-                            "apiVersion": "2018-09-01",
-                            "location": "global",
-                            "dependsOn": [
-                                "[parameters('privateLinkPrivateDnsZoneFQDN')]"
-                            ],
-                            "properties": {
-                                "virtualNetwork": {
-                                    "id": ""
-                                },
-                                "registrationEnabled": false
-                            }
-                        },
-                        {
-                            "apiVersion": "[variables('deploymentTemplateApi')]",
-                            "name": "[concat('EndpointDnsRecords-', parameters('privateEndpointDnsRecordUniqueId'))]",
-                            "type": "Microsoft.Resources/deployments",
-                            "dependsOn": [
-                                "[parameters('privateLinkPrivateDnsZoneFQDN')]"
-                            ],
-                            "properties": {
-                                "mode": "Incremental",
-                                "templatelink": {
-                                    "contentVersion": "1.0.0.0",
-                                    "uri": "[parameters('privateDnsForPrivateEndpointTemplateLink')]"
-                                },
-                                "parameters": {
-                                    "privateDnsName": {
-                                        "value": "[parameters('privateLinkPrivateDnsZoneFQDN')]"
-                                    },
-                                    "privateEndpointNicResourceId": {
-                                        "value": "[if(parameters('enablePrivateEndpoint'), reference(concat('Microsoft.Resources/deployments/', variables('privateEndpointTemplateName'))).outputs.networkInterfaceId.value, '')]"
-                                    },
-                                    "nicRecordsTemplateUri": {
-                                        "value": "[parameters('privateDnsForPrivateEndpointNicTemplateLink')]"
-                                    },
-                                    "ipConfigRecordsTemplateUri": {
-                                        "value": "[parameters('privateDnsForPrivateEndpointIpConfigTemplateLink')]"
-                                    },
-                                    "uniqueId": {
-                                        "value": "[parameters('privateEndpointDnsRecordUniqueId')]"
-                                    },
-                                    "existingRecords": {
-                                        "value": {}
-                                    }
-                                }
-                            }
-                        }
-                    ]
-                }
-            }
-        },
-        /*REGISTRY*/
-        {
-            "name": "[parameters('registryName')]",
-            "type": "Microsoft.ContainerRegistry/registries",
-            "location": "[parameters('registryLocation')]",
-            "apiVersion": "[parameters('registryApiVersion')]",
-            "sku": {
-                "name": "[parameters('registrySku')]"
-            },
-            "dependsOn": [],
-            "properties": {
-                "publicNetworkAccess": "[parameters('publicNetworkAccess')]",
-                "zoneRedundancy": "[parameters('zoneRedundancy')]"
-            }
-        },
-        /*APP SERVICE*/
-        {
-            "apiVersion": "2018-11-01",
-            "name": "[parameters('name')]",
-            "type": "Microsoft.Web/sites",
-            "location": "[parameters('location')]",
-            "tags": {},
-            "dependsOn": [ "Microsoft.ContainerRegistry/registries/[parameters('registryName')]" ],
-            "properties": {
-                "name": "[parameters('name')]",
-                "siteConfig": {
-                    "appSettings": [
-                        {
-                            "name": "DOCKER_REGISTRY_SERVER_URL",
-                            "value": "[parameters('dockerRegistryUrl')]"
-                        },
-                        /*{
-                            "name": "DOCKER_REGISTRY_SERVER_USERNAME",
-                            "value": "[parameters('dockerRegistryUsername')]"
-                        },
-                        {
-                            "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
-                            "value": "[parameters('dockerRegistryPassword')]"
-                        },*/
-                        {
-                            "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
-                            "value": "false"
-                        },
-                        {
-                            "name": "SERVER_NAME",
-                            "value": ""
-                        },
-                        {
-                            "name": "REDIRECT_PATH",
-                            "value": "/auth/signin-oidc"
-                        },
-                        {
-                            "name": "ADMIN_ROLE",
-                            "value": ""
-                        },
-                        {
-                            "name": "AZDBDRIVER",
-                            "value": "(ODBC Driver 17 for SQL Server)"
-                        },
-                        {
-                            "name": "AZDBNAME",
-                            "value": ""
-                        },
-                        {
-                            "name": "AZDBPW",
-                            "value": ""
-                        },
-                        {
-                            "name": "AZDBSERVER",
-                            "value": "{your_db_name}.database.windows.net"
-                        },
-                        {
-                            "name": "AZUREAD_ID",
-                            "value": ""
-                        },
-                        {
-                            "name": "CLIENT_ID",
-                            "value": ""
-                        },
-                        {
-                            "name": "CLIENT_SECRET",
-                            "value": ""
-                        },
-                        {
-                            "name": "DEVOPS_ORG_NAME",
-                            "value": ""
-                        },
-                        {
-                            "name": "DEVOPS_PROJECT_NAME",
-                            "value": ""
-                        },
-                        {
-                            "name": "SCOPE",
-                            "value": "499b84ac-1321-427f-aa17-267ca6975798/.default"
-                        },
-                        {
-                            "name": "SECRET_KEY",
-                            "value": ""
-                        },
-                        {
-                            "name": "SESSION_LIFETIME_HOURS",
-                            "value": ""
-                        }
-                    ],
-                    "linuxFxVersion": "[parameters('linuxFxVersion')]",
-                    /*"appCommandLine": "[parameters('dockerRegistryStartupCommand')]",*/
-                    "alwaysOn": "[parameters('alwaysOn')]"
-                },
-                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
-                "clientAffinityEnabled": false,
-                "virtualNetworkSubnetId": null
-            }
         }
     ],
     "variables": {
-        "subscriptionId": "[subscription().subscriptionId]",
-        "resourceGroupName": "[resourceGroup().name]",
-        "subnetPoliciesTemplateName": "[concat('SubnetPolicies-', if(parameters('enablePrivateEndpoint'), parameters('privateEndpointNestedTemplateId'), ''))]",
-        "privateEndpointTemplateName": "[concat('PrivateEndpoint-', if(parameters('enablePrivateEndpoint'), parameters('privateEndpointNestedTemplateId'), ''))]",
-        "deploymentTemplateApi": "2018-05-01",
-        "privateEndpointApi": "2019-04-01",
-        "StorageBlobContributor": "[subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe')]"
+        "fullyQualifiedIntuneCDdbName": "[concat(variables('IntuneCDdbName'), '/', parameters('IntuneCDdbName'))]",
+        "IntuneCDdbName": "[concat('IntuneCDdb', uniqueString(resourceGroup().id))]"
     }
 }
