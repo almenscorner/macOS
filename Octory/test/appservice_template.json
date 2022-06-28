@@ -47,7 +47,6 @@
             "type": "string"
         }
     },
-    "variables": {},
     "resources": [
         {
             "apiVersion": "2018-11-01",
