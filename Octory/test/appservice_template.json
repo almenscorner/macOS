@@ -249,7 +249,7 @@
     ],
     "variables": {
         "fullyQualifiedIntuneCDdbName": "[concat(variables('IntuneCDdbName'), '/', parameters('IntuneCD DB Name'))]",
-        "IntuneCDdbName": "[concat('IntuneCDdb', uniqueString(resourceGroup().id))]",
+        "IntuneCDdbName": "[concat('IntuneCDdb', uniqueString(resourceGroup().id))]"
         /*"IntuneCDName": "[concat('IntuneCD', uniqueString(resourceGroup().id))]"*/
     }
 }
