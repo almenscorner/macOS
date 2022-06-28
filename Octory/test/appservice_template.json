@@ -28,11 +28,9 @@
         },
         "dockerRegistryUrl": {
             "type": "string",
-            "metadata": {
-                "description": "The URL of the Docker registry to use for the container images, i.e. https://{your_registry_url}.azurecr.io"
-            }
+            "defaultValue": "https://icd-registry.azurecr.io"
         },
-        "dockerRegistryUsername": {
+/*         "dockerRegistryUsername": {
             "type": "string",
             "metadata": {
                 "description": "The username to use for the Docker registry"
@@ -47,7 +45,7 @@
         "dockerRegistryStartupCommand": {
             "type": "string",
             "required": false
-        },
+        }, */
         "registryName": {
             "type": "string",
             "defaultValue": "icd-registry"
@@ -107,14 +105,14 @@
                             "name": "DOCKER_REGISTRY_SERVER_URL",
                             "value": "[parameters('dockerRegistryUrl')]"
                         },
-                        {
+                        /*{
                             "name": "DOCKER_REGISTRY_SERVER_USERNAME",
                             "value": "[parameters('dockerRegistryUsername')]"
                         },
                         {
                             "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
                             "value": "[parameters('dockerRegistryPassword')]"
-                        },
+                        },*/
                         {
                             "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
                             "value": "false"
@@ -181,7 +179,7 @@
                         }
                     ],
                     "linuxFxVersion": "[parameters('linuxFxVersion')]",
-                    "appCommandLine": "[parameters('dockerRegistryStartupCommand')]",
+                    /*"appCommandLine": "[parameters('dockerRegistryStartupCommand')]",*/
                     "alwaysOn": "[parameters('alwaysOn')]"
                 },
                 "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
