@@ -150,6 +150,7 @@
         },
         /* WEB APP */
         {
+            "apiVersion": "2018-11-01",
             "name": "[variables('IntuneCDName')]",
             "type": "Microsoft.Web/sites",
             "location": "[resourceGroup().location]",
