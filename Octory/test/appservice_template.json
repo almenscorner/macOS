@@ -94,7 +94,7 @@
             "sku": {
                 "name": "Standard"
             },
-            "dependsOn": [],
+            "dependsOn": ["[resourceId('Microsoft.Web/serverfarms', parameters('IntuneCD Farm Name'))]"],
             "properties": {
                 "publicNetworkAccess": "Enabled",
                 "zoneRedundancy": "Disabled"
@@ -125,7 +125,7 @@
             "type": "Microsoft.Sql/servers",
             "location": "[resourceGroup().location]",
             "apiVersion": "2014-04-01-preview",
-            "dependsOn": [],
+            "dependsOn": ["[resourceId('Microsoft.ContainerRegistry/registries', parameters('IntuneCD Farm Name'))]"],
             "tags": {
                 "displayName": "IntuneCDdb"
             },
@@ -152,19 +152,19 @@
         /* WEB APP */
         {
             "apiVersion": "2018-11-01",
-            "name": "[variables('IntuneCDName')]",
+            "name": "[parameters('IntuneCD Farm Name')]",
             "type": "Microsoft.Web/sites",
             "location": "[resourceGroup().location]",
             "apiVersion": "2015-08-01",
             "dependsOn": [
-                "[concat('Microsoft.Web/serverfarms/', parameters('IntuneCD Farm Name'))]"
+                "[resourceId('Microsoft.Sql/servers/databases', variables('IntuneCDdbName'))]"
             ],
             "tags": {
                 "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('IntuneCD Farm Name'))]": "Resource",
                 "displayName": "IntuneCD"
             },
             "properties": {
-                "name": "[variables('IntuneCDName')]",
+                "name": "[parameters('IntuneCD Farm Name')]",
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('IntuneCD Farm Name'))]",
                 "siteConfig": {
                     "appSettings": [
@@ -178,7 +178,7 @@
                         },
                         {
                             "name": "SERVER_NAME",
-                            "value": "[concat('https://', variables('IntuneCDName'), '.azurewebsites.net')]"
+                            "value": "[concat('https://', parameters('IntuneCD Farm Name'), '.azurewebsites.net')]"
                         },
                         {
                             "name": "REDIRECT_PATH",
@@ -250,6 +250,6 @@
     "variables": {
         "fullyQualifiedIntuneCDdbName": "[concat(variables('IntuneCDdbName'), '/', parameters('IntuneCD DB Name'))]",
         "IntuneCDdbName": "[concat('IntuneCDdb', uniqueString(resourceGroup().id))]",
-        "IntuneCDName": "[concat('IntuneCD', uniqueString(resourceGroup().id))]"
+        /*"IntuneCDName": "[concat('IntuneCD', uniqueString(resourceGroup().id))]"*/
     }
 }
