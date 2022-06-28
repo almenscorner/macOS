@@ -87,7 +87,7 @@
         },
         /* CONTAINER REGISTRY */
         {
-            "name": "[parameters('IntuneCD Farm Name')]",
+            "name": "[variables('IntuneCDName')]",
             "type": "Microsoft.ContainerRegistry/registries",
             "apiVersion": "2017-10-01",
             "location": "[resourceGroup().location]",
@@ -156,7 +156,7 @@
             "type": "Microsoft.Web/sites",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers/databases', variables('IntuneCDdbName'))]"
+                "[resourceId('Microsoft.Sql/servers', variables('IntuneCDdbName'))]"
             ],
             "tags": {
                 "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('IntuneCD Farm Name'))]": "Resource",
@@ -169,7 +169,7 @@
                     "appSettings": [
                         {
                             "name": "DOCKER_REGISTRY_SERVER_URL",
-                            "value": "[concat('https://', parameters('IntuneCD Farm Name'), '.azurecr.io')]"
+                            "value": "[concat(variables('IntuneCDName'), '.azurecr.io')]"
                         },
                         {
                             "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
@@ -177,7 +177,7 @@
                         },
                         {
                             "name": "SERVER_NAME",
-                            "value": "[concat('https://', parameters('IntuneCD Farm Name'), '.azurewebsites.net')]"
+                            "value": "[concat(variables('URL'), '.azurewebsites.net')]"
                         },
                         {
                             "name": "REDIRECT_PATH",
@@ -248,7 +248,8 @@
     ],
     "variables": {
         "fullyQualifiedIntuneCDdbName": "[concat(variables('IntuneCDdbName'), '/', parameters('IntuneCD DB Name'))]",
-        "IntuneCDdbName": "[concat('IntuneCDdb', uniqueString(resourceGroup().id))]"
-        /*"IntuneCDName": "[concat('IntuneCD', uniqueString(resourceGroup().id))]"*/
+        "IntuneCDdbName": "[concat('IntuneCDdb', uniqueString(resourceGroup().id))]",
+        "URL": "[concat('https://', parameters('IntuneCD Farm Name'))]",
+        "IntuneCDName": "[concat('IntuneCD', uniqueString(resourceGroup().id))]"
     }
 }
