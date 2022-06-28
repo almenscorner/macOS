@@ -68,20 +68,6 @@
         }
     },
     "resources": [
-        /* CONTAINER REGISTRY */
-        {
-            "name": "[parameters('IntuneCD Farm Name')]",
-            "type": "Microsoft.ContainerRegistry/registries",
-            "location": "[resourceGroup().location]",
-            "sku": {
-                "name": "Standard"
-            },
-            "dependsOn": [],
-            "properties": {
-                "publicNetworkAccess": "Enabled",
-                "zoneRedundancy": "Disabled"
-            }
-        },
         /* SERVER FARM */
         {
             "name": "[parameters('IntuneCD Farm Name')]",
@@ -97,6 +83,21 @@
                 "sku": "[parameters('IntuneCD Farm SKU')]",
                 "workerSize": "[parameters('IntuneCD Farm WorkerSize')]",
                 "numberOfWorkers": 1
+            }
+        },
+        /* CONTAINER REGISTRY */
+        {
+            "name": "[parameters('IntuneCD Farm Name')]",
+            "type": "Microsoft.ContainerRegistry/registries",
+            "apiVersion": "2017-10-01",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard"
+            },
+            "dependsOn": [],
+            "properties": {
+                "publicNetworkAccess": "Enabled",
+                "zoneRedundancy": "Disabled"
             }
         },
         /* DATABASE */
