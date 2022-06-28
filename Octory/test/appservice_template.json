@@ -43,6 +43,10 @@
             "metadata": {
                 "description": "The password to use for the Docker registry"
             }
+        },
+        "dockerRegistryStartupCommand": {
+            "type": "string",
+            "required": false
         }
     },
     "variables": {},
@@ -136,6 +140,7 @@
                         }
                     ],
                     "linuxFxVersion": "[parameters('linuxFxVersion')]",
+                    "appCommandLine": "[parameters('dockerRegistryStartupCommand')]",
                     "alwaysOn": "[parameters('alwaysOn')]"
                 },
                 "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
