@@ -84,7 +84,7 @@
                         },
                         {
                             "name": "REDIRECT_PATH",
-                            "value": ""
+                            "value": "/auth/signin-oidc"
                         },
                         {
                             "name": "ADMIN_ROLE",
@@ -128,7 +128,7 @@
                         },
                         {
                             "name": "SCOPE",
-                            "value": ["499b84ac-1321-427f-aa17-267ca6975798/.default"]
+                            "value": "499b84ac-1321-427f-aa17-267ca6975798/.default"
                         },
                         {
                             "name": "SECRET_KEY",
