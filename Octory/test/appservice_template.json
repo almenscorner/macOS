@@ -47,17 +47,58 @@
         "dockerRegistryStartupCommand": {
             "type": "string",
             "required": false
+        },
+        "registryName": {
+            "type": "string",
+            "defaultValue": "icd-registry"
+        },
+        "registryLocation": {
+            "type": "string"
+        },
+        "zoneRedundancy": {
+            "type": "string",
+            "defaultValue": "Disabled"
+        },
+        "registrySku": {
+            "type": "string",
+            "defaultValue": "Standard"
+        },
+        "registryApiVersion": {
+            "type": "string",
+            "defaultValue": "2017-06-01"
+        },
+        "tags": {
+            "type": "object"
+        },
+        "publicNetworkAccess": {
+            "type": "string",
+            "defaultValue": "Enabled"
         }
     },
     "variables": {},
     "resources": [
+        {
+            "name": "[parameters('registryName')]",
+            "type": "Microsoft.ContainerRegistry/registries",
+            "location": "[parameters('registryLocation')]",
+            "apiVersion": "[parameters('registryApiVersion')]",
+            "sku": {
+                "name": "[parameters('registrySku')]"
+            },
+            "dependsOn": [],
+            "tags": "[parameters('tags')]",
+            "properties": {
+                "publicNetworkAccess": "[parameters('publicNetworkAccess')]",
+                "zoneRedundancy": "[parameters('zoneRedundancy')]"
+            }
+        },
         {
             "apiVersion": "2018-11-01",
             "name": "[parameters('name')]",
             "type": "Microsoft.Web/sites",
             "location": "[parameters('location')]",
             "tags": {},
-            "dependsOn": [],
+            "dependsOn": [ "Microsoft.ContainerRegistry/registries/[parameters('registryName')]" ],
             "properties": {
                 "name": "[parameters('name')]",
                 "siteConfig": {
