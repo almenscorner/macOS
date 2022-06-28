@@ -19,7 +19,8 @@
             "type": "string"
         },
         "alwaysOn": {
-            "type": "bool"
+            "type": "bool",
+            "defaultValue": "false"
         },
         "linuxFxVersion": {
             "type": "string",
@@ -29,7 +30,6 @@
             "type": "string",
             "metadata": {
                 "description": "The URL of the Docker registry to use for the container images, i.e. https://{your_registry_url}.azurecr.io"
-            }
         },
         "dockerRegistryUsername": {
             "type": "string",
