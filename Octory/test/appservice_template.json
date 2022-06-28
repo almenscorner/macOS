@@ -30,6 +30,7 @@
             "type": "string",
             "metadata": {
                 "description": "The URL of the Docker registry to use for the container images, i.e. https://{your_registry_url}.azurecr.io"
+            }
         },
         "dockerRegistryUsername": {
             "type": "string",
@@ -45,7 +46,7 @@
         },
         "dockerRegistryStartupCommand": {
             "type": "string",
-            "defaultValue": ""
+            "defaultValue": null
         }
     },
     "variables": {},
@@ -96,6 +97,4 @@
             }
         }
     ]
-}
-
 }
