@@ -2,11 +2,11 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "IntuneCDName": {
+        "IntuneCD Farm Name": {
             "type": "string",
             "minLength": 1
         },
-        "IntuneCDSKU": {
+        "IntuneCD Farm SKU": {
             "type": "string",
             "allowedValues": [
                 "Free",
@@ -16,7 +16,7 @@
             ],
             "defaultValue": "Free"
         },
-        "IntuneCDWorkerSize": {
+        "IntuneCD Farm WorkerSize": {
             "type": "string",
             "allowedValues": [
                 "0",
@@ -25,16 +25,16 @@
             ],
             "defaultValue": "0"
         },
-        "IntuneCDdbName": {
+        "IntuneCD DB Name": {
             "type": "string",
             "minLength": 1
         },
-        "IntuneCDdbCollation": {
+        "IntuneCD DB Collation": {
             "type": "string",
             "minLength": 1,
             "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
         },
-        "IntuneCDdbEdition": {
+        "IntuneCD DB Edition": {
             "type": "string",
             "defaultValue": "Basic",
             "allowedValues": [
@@ -43,7 +43,7 @@
                 "Premium"
             ]
         },
-        "IntuneCDdbRequestedServiceObjectiveName": {
+        "IntuneCD DB RequestedServiceObjectiveName": {
             "type": "string",
             "defaultValue": "Basic",
             "allowedValues": [
@@ -59,17 +59,17 @@
                 "description": "Describes the performance level for Edition"
             }
         },
-        "IntuneCDdbAdminLogin": {
+        "IntuneCD DB AdminLogin": {
             "type": "string",
             "minLength": 1
         },
-        "IntuneCDdbAdminLoginPassword": {
+        "IntuneCD DB AdminLoginPassword": {
             "type": "securestring"
         }
     },
     "resources": [
         {
-            "name": "[parameters('IntuneCDName')]",
+            "name": "[parameters('IntuneCD Farm Name')]",
             "type": "Microsoft.Web/serverfarms",
             "location": "[resourceGroup().location]",
             "apiVersion": "2014-06-01",
@@ -78,9 +78,9 @@
                 "displayName": "IntuneCD"
             },
             "properties": {
-                "name": "[parameters('IntuneCDName')]",
-                "sku": "[parameters('IntuneCDSKU')]",
-                "workerSize": "[parameters('IntuneCDWorkerSize')]",
+                "name": "[parameters('IntuneCD Farm Name')]",
+                "sku": "[parameters('IntuneCD Farm SKU')]",
+                "workerSize": "[parameters('IntuneCD Farm WorkerSize')]",
                 "numberOfWorkers": 1
             }
         },
@@ -96,10 +96,10 @@
                 "displayName": "IntuneCDdb"
             },
             "properties": {
-                "collation": "[parameters('IntuneCDdbCollation')]",
-                "edition": "[parameters('IntuneCDdbEdition')]",
+                "collation": "[parameters('IntuneCD DB Collation')]",
+                "edition": "[parameters('IntuneCD DB Edition')]",
                 "maxSizeBytes": "1073741824",
-                "requestedServiceObjectiveName": "[parameters('IntuneCDdbRequestedServiceObjectiveName')]"
+                "requestedServiceObjectiveName": "[parameters('IntuneCD DB RequestedServiceObjectiveName')]"
             }
         },
         {
@@ -112,8 +112,8 @@
                 "displayName": "IntuneCDdb"
             },
             "properties": {
-                "administratorLogin": "[parameters('IntuneCDdbAdminLogin')]",
-                "administratorLoginPassword": "[parameters('IntuneCDdbAdminLoginPassword')]"
+                "administratorLogin": "[parameters('IntuneCD DB AdminLogin')]",
+                "administratorLoginPassword": "[parameters('IntuneCD DB AdminLoginPassword')]"
             },
             "resources": [
                 {
@@ -130,10 +130,28 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "[variables('IntuneCDName')]",
+            "type": "Microsoft.Web/sites",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2015-08-01",
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', parameters('IntuneCD Farm Name'))]"
+            ],
+            "tags": {
+                "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('IntuneCD Farm Name'))]": "Resource",
+                "displayName": "IntuneCD"
+            },
+            "properties": {
+                "name": "[variables('IntuneCDName')]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('IntuneCD Farm Name'))]"
+            }
         }
     ],
     "variables": {
-        "fullyQualifiedIntuneCDdbName": "[concat(variables('IntuneCDdbName'), '/', parameters('IntuneCDdbName'))]",
-        "IntuneCDdbName": "[concat('IntuneCDdb', uniqueString(resourceGroup().id))]"
+        "fullyQualifiedIntuneCDdbName": "[concat(variables('IntuneCDdbName'), '/', parameters('IntuneCD DB Name'))]",
+        "IntuneCDdbName": "[concat('IntuneCDdb', uniqueString(resourceGroup().id))]",
+        "IntuneCDName": "[concat('IntuneCD', uniqueString(resourceGroup().id))]"
     }
 }
