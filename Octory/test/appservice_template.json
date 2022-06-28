@@ -155,7 +155,6 @@
             "name": "[parameters('IntuneCD Farm Name')]",
             "type": "Microsoft.Web/sites",
             "location": "[resourceGroup().location]",
-            "apiVersion": "2015-08-01",
             "dependsOn": [
                 "[resourceId('Microsoft.Sql/servers/databases', variables('IntuneCDdbName'))]"
             ],
