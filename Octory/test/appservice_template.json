@@ -1,12 +1,13 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "subscriptionId": {
             "type": "string"
         },
         "name": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "IntuneCD-{your_name}"
         },
         "location": {
             "type": "string"
@@ -22,16 +23,25 @@
         },
         "linuxFxVersion": {
             "type": "string",
-            "value": "COMPOSE|dmVyc2lvbjogIjMuOCIKCnNlcnZpY2VzOgoKICB3ZWI6CiAgICBpbWFnZTogaW50dW5lY2QuYXp1cmVjci5pby9pbnR1bmVjZC1mcm9udGVuZF93ZWI6bGF0ZXN0CiAgICByZXN0YXJ0OiBhbHdheXMKICAgIGNvbW1hbmQ6IGd1bmljb3JuIC0tYmluZCAwLjAuMC4wOjgwODAgLS10aHJlYWRzIDEwIHJ1bjphcHAKICAgIGV4cG9zZToKICAgICAgLSA4MDgwOjgwODAKICAKICBuZ2lueDoKICAgIGltYWdlOiBpbnR1bmVjZC5henVyZWNyLmlvL2ludHVuZWNkLWZyb250ZW5kX25naW54OmxhdGVzdAogICAgcmVzdGFydDogYWx3YXlzCiAgICBjb21tYW5kOiBbIi9iaW4vc2giLCAiLWMiLCAiZW52c3Vic3QgPCAvZXRjL25naW54L2NvbmYuZC9uZ2lueC5jb25mLnRlbXBsYXRlID4gL2V0Yy9uZ2lueC9jb25mLmQvbmdpbnguY29uZiAmJiBleGVjIG5naW54IC1nICdkYWVtb24gb2ZmOyciXQogICAgcG9ydHM6CiAgICAgIC0gODA6ODA="
+            "defaultValue": "COMPOSE|dmVyc2lvbjogIjMuOCIKCnNlcnZpY2VzOgoKICB3ZWI6CiAgICBpbWFnZTogaW50dW5lY2QuYXp1cmVjci5pby9pbnR1bmVjZC1mcm9udGVuZF93ZWI6bGF0ZXN0CiAgICByZXN0YXJ0OiBhbHdheXMKICAgIGNvbW1hbmQ6IGd1bmljb3JuIC0tYmluZCAwLjAuMC4wOjgwODAgLS10aHJlYWRzIDEwIHJ1bjphcHAKICAgIGV4cG9zZToKICAgICAgLSA4MDgwOjgwODAKICAKICBuZ2lueDoKICAgIGltYWdlOiBpbnR1bmVjZC5henVyZWNyLmlvL2ludHVuZWNkLWZyb250ZW5kX25naW54OmxhdGVzdAogICAgcmVzdGFydDogYWx3YXlzCiAgICBjb21tYW5kOiBbIi9iaW4vc2giLCAiLWMiLCAiZW52c3Vic3QgPCAvZXRjL25naW54L2NvbmYuZC9uZ2lueC5jb25mLnRlbXBsYXRlID4gL2V0Yy9uZ2lueC9jb25mLmQvbmdpbnguY29uZiAmJiBleGVjIG5naW54IC1nICdkYWVtb24gb2ZmOyciXQogICAgcG9ydHM6CiAgICAgIC0gODA6ODA="
         },
         "dockerRegistryUrl": {
-            "type": "string"
+            "type": "string",
+            "metadata": {
+                "description": "The URL of the Docker registry to use for the container images, i.e. https://{your_registry_url}.azurecr.io"
+            }
         },
         "dockerRegistryUsername": {
-            "type": "string"
+            "type": "string",
+            "metadata": {
+                "description": "The username to use for the Docker registry"
+            }
         },
         "dockerRegistryPassword": {
-            "type": "securestring"
+            "type": "securestring",
+            "metadata": {
+                "description": "The password to use for the Docker registry"
+            }
         },
         "dockerRegistryStartupCommand": {
             "type": "string"
