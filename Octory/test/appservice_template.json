@@ -24,7 +24,7 @@
         },
         "linuxFxVersion": {
             "type": "string",
-            "defaultValue": "COMPOSE|dmVyc2lvbjogIjMuOCIKCnNlcnZpY2VzOgoKICB3ZWI6CiAgICBpbWFnZTogaW50dW5lY2QuYXp1cmVjci5pby9pbnR1bmVjZC1mcm9udGVuZF93ZWI6bGF0ZXN0CiAgICByZXN0YXJ0OiBhbHdheXMKICAgIGNvbW1hbmQ6IGd1bmljb3JuIC0tYmluZCAwLjAuMC4wOjgwODAgLS10aHJlYWRzIDEwIHJ1bjphcHAKICAgIGV4cG9zZToKICAgICAgLSA4MDgwOjgwODAKICAKICBuZ2lueDoKICAgIGltYWdlOiBpbnR1bmVjZC5henVyZWNyLmlvL2ludHVuZWNkLWZyb250ZW5kX25naW54OmxhdGVzdAogICAgcmVzdGFydDogYWx3YXlzCiAgICBjb21tYW5kOiBbIi9iaW4vc2giLCAiLWMiLCAiZW52c3Vic3QgPCAvZXRjL25naW54L2NvbmYuZC9uZ2lueC5jb25mLnRlbXBsYXRlID4gL2V0Yy9uZ2lueC9jb25mLmQvbmdpbnguY29uZiAmJiBleGVjIG5naW54IC1nICdkYWVtb24gb2ZmOyciXQogICAgcG9ydHM6CiAgICAgIC0gODA6ODA="
+            "defaultValue": "COMPOSE|dmVyc2lvbjogIjMuOCIKCnNlcnZpY2VzOgoKICB3ZWI6CiAgICBpbWFnZToge3lvdXJfcmVnaXN0cnlfbmFtZX0uYXp1cmVjci5pby9pbnR1bmVjZC1mcm9udGVuZF93ZWI6bGF0ZXN0CiAgICByZXN0YXJ0OiBhbHdheXMKICAgIGNvbW1hbmQ6IGd1bmljb3JuIC0tYmluZCAwLjAuMC4wOjgwODAgLS10aHJlYWRzIDEwIHJ1bjphcHAKICAgIGV4cG9zZToKICAgICAgLSA4MDgwOjgwODAKICAKICBuZ2lueDoKICAgIGltYWdlOiB7eW91cl9yZWdpc3RyeV9uYW1lfS5henVyZWNyLmlvL2ludHVuZWNkLWZyb250ZW5kX25naW54OmxhdGVzdAogICAgcmVzdGFydDogYWx3YXlzCiAgICBjb21tYW5kOiBbIi9iaW4vc2giLCAiLWMiLCAiZW52c3Vic3QgPCAvZXRjL25naW54L2NvbmYuZC9uZ2lueC5jb25mLnRlbXBsYXRlID4gL2V0Yy9uZ2lueC9jb25mLmQvbmdpbnguY29uZiAmJiBleGVjIG5naW54IC1nICdkYWVtb24gb2ZmOyciXQogICAgcG9ydHM6CiAgICAgIC0gODA6ODA="
         },
         "dockerRegistryUrl": {
             "type": "string",
@@ -43,10 +43,6 @@
             "metadata": {
                 "description": "The password to use for the Docker registry"
             }
-        },
-        "dockerRegistryStartupCommand": {
-            "type": "string",
-            "defaultValue": null
         }
     },
     "variables": {},
@@ -85,10 +81,61 @@
                         {
                             "name": "REDIRECT_PATH",
                             "value": ""
+                        },
+                        {
+                            "name": "ADMIN_ROLE",
+                            "value": ""
+                        },
+                        {
+                            "name": "AZDBDRIVER",
+                            "value": "(ODBC Driver 17 for SQL Server)"
+                        },
+                        {
+                            "name": "AZDBNAME",
+                            "value": ""
+                        },
+                        {
+                            "name": "AZDBPW",
+                            "value": ""
+                        },
+                        {
+                            "name": "AZDBSERVER",
+                            "value": "{your_db_name}.database.windows.net"
+                        },
+                        {
+                            "name": "AZUREAD_ID",
+                            "value": ""
+                        },
+                        {
+                            "name": "CLIENT_ID",
+                            "value": ""
+                        },
+                        {
+                            "name": "CLIENT_SECRET",
+                            "value": ""
+                        },
+                        {
+                            "name": "DEVOPS_ORG_NAME",
+                            "value": ""
+                        },
+                        {
+                            "name": "DEVOPS_PROJECT_NAME",
+                            "value": ""
+                        },
+                        {
+                            "name": "SCOPE",
+                            "value": ["499b84ac-1321-427f-aa17-267ca6975798/.default"]
+                        },
+                        {
+                            "name": "SECRET_KEY",
+                            "value": ""
+                        },
+                        {
+                            "name": "SESSION_LIFETIME_HOURS",
+                            "value": ""
                         }
                     ],
                     "linuxFxVersion": "[parameters('linuxFxVersion')]",
-                    "appCommandLine": "[parameters('dockerRegistryStartupCommand')]",
                     "alwaysOn": "[parameters('alwaysOn')]"
                 },
                 "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
