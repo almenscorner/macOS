@@ -20,7 +20,7 @@
         },
         "alwaysOn": {
             "type": "bool",
-            "defaultValue": "false"
+            "defaultValue": false
         },
         "linuxFxVersion": {
             "type": "string",
@@ -44,9 +44,11 @@
             }
         },
         "dockerRegistryStartupCommand": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": null
         }
     },
+    "variables": {},
     "resources": [
         {
             "apiVersion": "2018-11-01",
