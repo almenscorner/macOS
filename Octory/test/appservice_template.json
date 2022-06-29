@@ -106,7 +106,7 @@
         },
         /* DATABASE */
         {
-            "name": "[parameters('IntuneCD DB Name')]",
+            "name": "[variables('IntuneCDdbName')]",
             "type": "Microsoft.Sql/servers",
             "location": "[resourceGroup().location]",
             "apiVersion": "2014-04-01-preview",
@@ -125,7 +125,7 @@
                     "location": "[resourceGroup().location]",
                     "apiVersion": "2014-04-01-preview",
                     "dependsOn": [
-                        "[concat('Microsoft.Sql/servers/', parameters('IntuneCD DB Name'))]"
+                        "[concat('Microsoft.Sql/servers/', variables('IntuneCDdbName'))]"
                     ],
                     "properties": {
                         "startIpAddress": "0.0.0.0",
@@ -140,7 +140,7 @@
             "location": "[resourceGroup().location]",
             "apiVersion": "2014-04-01-preview",
             "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers', parameters('IntuneCD DB Name'))]"
+                "[resourceId('Microsoft.Sql/servers', variables('IntuneCDdbName'))]"
             ],
             "tags": {
                 "displayName": "IntuneCD"
@@ -159,7 +159,7 @@
             "type": "Microsoft.Web/sites",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers', parameters('IntuneCD DB Name'))]"
+                "[resourceId('Microsoft.Sql/servers', variables('IntuneCDdbName'))]"
             ],
             "tags": {
                 "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('IntuneCD Farm Name'))]": "Resource",
@@ -196,7 +196,7 @@
                         },
                         {
                             "name": "AZDBNAME",
-                            "value": "[parameters('IntuneCD DB Name')]"
+                            "value": "[variables('IntuneCDdbName')]"
                         },
                         {
                             "name": "AZDBUSER",
@@ -208,7 +208,7 @@
                         },
                         {
                             "name": "AZDBSERVER",
-                            "value": "[concat(parameters('IntuneCD DB Name'), '.database.windows.net')]"
+                            "value": "[concat(variables('IntuneCDdbName'), '.database.windows.net')]"
                         },
                         {
                             "name": "AZUREAD_ID",
@@ -251,7 +251,7 @@
     ],
     "variables": {
         "fullyQualifiedIntuneCDdbName": "[concat(variables('IntuneCDdbName'), '/', parameters('IntuneCD DB Name'))]",
-        "IntuneCDdbName": "[concat('IntuneCDdb', uniqueString(resourceGroup().id))]",
+        "IntuneCDdbName": "[concat('intunecd', uniqueString(resourceGroup().id))]",
         "URL": "[concat('https://', parameters('IntuneCD Farm Name'))]"
         /*"IntuneCDName": "[concat('IntuneCD', uniqueString(resourceGroup().id))]"*/
     }
