@@ -164,7 +164,6 @@
             "name": "[parameters('IntuneCD Farm Name')]",
             "type": "Microsoft.Web/sites",
             "location": "[resourceGroup().location]",
-            "state": "Running",
             "dependsOn": [
                 "[resourceId('Microsoft.Sql/servers', variables('IntuneCDdbName'))]"
             ],
@@ -254,7 +253,7 @@
                     "alwaysOn": false,
                     "webSocketsEnabled": true,
                     "httpsOnly": true
-                }
+                },
             }
         }
     ],
