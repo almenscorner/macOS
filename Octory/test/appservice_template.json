@@ -106,7 +106,7 @@
         },
         /* DATABASE */
         {
-            "name": "[parameters('IntuneCD DB Name')]",
+            "name": "[variables('IntuneCDdbName')]",
             "type": "Microsoft.Sql/servers/databases",
             "location": "[resourceGroup().location]",
             "apiVersion": "2014-04-01-preview",
@@ -125,7 +125,7 @@
 
         },
         {
-            "name": "[parameters('IntuneCD DB Name')]",
+            "name": "[variables('fullyQualifiedIntuneCDdbName')]",
             "type": "Microsoft.Sql/servers",
             "location": "[resourceGroup().location]",
             "apiVersion": "2014-04-01-preview",
@@ -251,8 +251,8 @@
         }
     ],
     "variables": {
-        /*"fullyQualifiedIntuneCDdbName": "[concat(variables('IntuneCDdbName'), '/', parameters('IntuneCD DB Name'))]",*/
-        /*"IntuneCDdbName": "[concat('IntuneCDdb', uniqueString(resourceGroup().id))]",*/
+        "fullyQualifiedIntuneCDdbName": "[concat(variables('IntuneCDdbName'), '/', parameters('IntuneCD DB Name'))]",
+        "IntuneCDdbName": "[concat('IntuneCDdb', uniqueString(resourceGroup().id))]",
         "URL": "[concat('https://', parameters('IntuneCD Farm Name'))]"
         /*"IntuneCDName": "[concat('IntuneCD', uniqueString(resourceGroup().id))]"*/
     }
