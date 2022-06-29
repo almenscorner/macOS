@@ -250,8 +250,8 @@
         }
     ],
     "variables": {
-        "fullyQualifiedIntuneCDdbName": "[concat(variables('IntuneCDdbName'), '/', parameters('IntuneCD DB Name'))]",
-        "IntuneCDdbName": "[concat('IntuneCDdb', uniqueString(resourceGroup().id))]",
+        /*"fullyQualifiedIntuneCDdbName": "[concat(variables('IntuneCDdbName'), '/', parameters('IntuneCD DB Name'))]",*/
+        /*"IntuneCDdbName": "[concat('IntuneCDdb', uniqueString(resourceGroup().id))]",*/
         "URL": "[concat('https://', parameters('IntuneCD Farm Name'))]"
         /*"IntuneCDName": "[concat('IntuneCD', uniqueString(resourceGroup().id))]"*/
     }
