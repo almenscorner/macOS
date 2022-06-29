@@ -88,12 +88,7 @@
                 "AzCliVersion": "2.0.80",
                 "timeout": "PT30M",
                 "arguments": "[variables('cliArg')]",
-                "scriptContent": "
-
-                appInfo=$(az ad app create --display-name $1 --identifier-uris \"$2\" --reply-urls \"$3\")
-                echo $appInfo > $AZ_SCRIPTS_OUTPUT_PATH
-
-                ",
+                "scriptContent": "appInfo=$(az ad app create --display-name $1 --identifier-uris \"$2\" --reply-urls \"$3\"); echo $appInfo > $AZ_SCRIPTS_OUTPUT_PATH",
                 "cleanupPreference": "OnSuccess",
                 "retentionInterval": "P1D"
             }
@@ -258,8 +253,8 @@
                     "linuxFxVersion": "COMPOSE|dmVyc2lvbjogIjMuOCIKCnNlcnZpY2VzOgoKICB3ZWI6CiAgICBpbWFnZToge3lvdXJfcmVnaXN0cnlfbmFtZX0uYXp1cmVjci5pby9pbnR1bmVjZC1mcm9udGVuZF93ZWI6bGF0ZXN0CiAgICByZXN0YXJ0OiBhbHdheXMKICAgIGNvbW1hbmQ6IGd1bmljb3JuIC0tYmluZCAwLjAuMC4wOjgwODAgLS10aHJlYWRzIDEwIHJ1bjphcHAKICAgIGV4cG9zZToKICAgICAgLSA4MDgwOjgwODAKICAKICBuZ2lueDoKICAgIGltYWdlOiB7eW91cl9yZWdpc3RyeV9uYW1lfS5henVyZWNyLmlvL2ludHVuZWNkLWZyb250ZW5kX25naW54OmxhdGVzdAogICAgcmVzdGFydDogYWx3YXlzCiAgICBjb21tYW5kOiBbIi9iaW4vc2giLCAiLWMiLCAiZW52c3Vic3QgPCAvZXRjL25naW54L2NvbmYuZC9uZ2lueC5jb25mLnRlbXBsYXRlID4gL2V0Yy9uZ2lueC9jb25mLmQvbmdpbnguY29uZiAmJiBleGVjIG5naW54IC1nICdkYWVtb24gb2ZmOyciXQogICAgcG9ydHM6CiAgICAgIC0gODA6ODA=",
                     "alwaysOn": false,
                     "webSocketsEnabled": true,
-                    "httpsOnly": true,
-                },
+                    "httpsOnly": true
+                }
             }
         }
     ],
