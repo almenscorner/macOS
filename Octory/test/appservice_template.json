@@ -106,32 +106,13 @@
         },
         /* DATABASE */
         {
-            "name": "[variables('IntuneCDdbName')]",
-            "type": "Microsoft.Sql/servers/databases",
-            "location": "[resourceGroup().location]",
-            "apiVersion": "2014-04-01-preview",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers', parameters('IntuneCD DB Name'))]"
-            ],
-            "tags": {
-                "displayName": "IntuneCDdb"
-            },
-            "properties": {
-                "collation": "[parameters('IntuneCD DB Collation')]",
-                "edition": "[parameters('IntuneCD DB Edition')]",
-                "maxSizeBytes": "1073741824",
-                "requestedServiceObjectiveName": "[parameters('IntuneCD DB RequestedServiceObjectiveName')]"
-            }
-
-        },
-        {
-            "name": "[variables('fullyQualifiedIntuneCDdbName')]",
+            "name": "[parameters('IntuneCD DB Name')]",
             "type": "Microsoft.Sql/servers",
             "location": "[resourceGroup().location]",
             "apiVersion": "2014-04-01-preview",
-            "dependsOn": ["[resourceId('Microsoft.ContainerRegistry/registries', parameters('IntuneCD Farm Name'))]"],
+            "dependsOn": [],
             "tags": {
-                "displayName": "IntuneCDdb"
+                "displayName": "IntuneCD"
             },
             "properties": {
                 "administratorLogin": "[parameters('IntuneCD DB AdminLogin')]",
@@ -152,6 +133,24 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "[parameters('IntuneCD DB Name')]",
+            "type": "Microsoft.Sql/servers/databases",
+            "location": "[resourceGroup().location]",
+            "apiVersion": "2014-04-01-preview",
+            "dependsOn": [
+                "[resourceId('Microsoft.Sql/servers', parameters('IntuneCD DB Name'))]"
+            ],
+            "tags": {
+                "displayName": "IntuneCD"
+            },
+            "properties": {
+                "collation": "[parameters('IntuneCD DB Collation')]",
+                "edition": "[parameters('IntuneCD DB Edition')]",
+                "maxSizeBytes": "1073741824",
+                "requestedServiceObjectiveName": "[parameters('IntuneCD DB RequestedServiceObjectiveName')]"
+            }
         },
         /* WEB APP */
         {
