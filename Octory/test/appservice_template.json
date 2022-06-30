@@ -301,10 +301,10 @@
                 }
             ],
             "linuxFxVersion": "COMPOSE|dmVyc2lvbjogIjMuOCIKCnNlcnZpY2VzOgoKICB3ZWI6CiAgICBpbWFnZTogZ2hjci5pby9hbG1lbnNjb3JuZXIvaW50dW5lY2QtbW9uaXRvci1wcml2YXRlOm1haW4KICAgIHJlc3RhcnQ6IGFsd2F5cwogICAgY29tbWFuZDogZ3VuaWNvcm4gLS1iaW5kIDAuMC4wLjA6ODA4MCAtLXRocmVhZHMgMTAgcnVuOmFwcAogICAgZXhwb3NlOgogICAgICAtIDgwODA6ODA4MAogIAogIG5naW54OgogICAgaW1hZ2U6IGdoY3IuaW8vYWxtZW5zY29ybmVyL2ludHVuZWNkLW1vbml0b3ItcHJpdmF0ZS9uZ2lueDptYWluCiAgICByZXN0YXJ0OiBhbHdheXMKICAgIGNvbW1hbmQ6IFsiL2Jpbi9zaCIsICItYyIsICJlbnZzdWJzdCA8IC9ldGMvbmdpbngvY29uZi5kL25naW54LmNvbmYudGVtcGxhdGUgPiAvZXRjL25naW54L2NvbmYuZC9uZ2lueC5jb25mICYmIGV4ZWMgbmdpbnggLWcgJ2RhZW1vbiBvZmY7JyJdCiAgICBwb3J0czoKICAgICAgLSA4MDo4MA==",
-            "alwaysOn": false,
-            "webSocketsEnabled": true,
-            "httpsOnly": true
+            "alwaysOn": false
         },
+        "webSocketsEnabled": true,
+        "httpsOnly": true,
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('IntuneCD Farm Name'))]"
     }
         }
