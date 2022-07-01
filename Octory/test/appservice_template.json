@@ -26,12 +26,6 @@
                 "description": "IntuneCD DevOps Project Name"
             }
         },
-        "IntuneCD Secret Key": {
-            "type": "securestring",
-            "metadata": {
-                "description": "IntuneCD Secret Key"
-            }
-        },
         "IntuneCD Farm Name": {
             "type": "string",
             "minLength": 1,
@@ -293,7 +287,7 @@
                 },
                 {
                     "name": "SECRET_KEY",
-                    "value": "[parameters('IntuneCD Secret Key')]"
+                    "value": "[uniqueString(resourceGroup().id)]"
                 },
                 {
                     "name": "SESSION_LIFETIME_HOURS",
