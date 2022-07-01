@@ -29,7 +29,7 @@
         "IntuneCD Farm Name": {
             "type": "string",
             "minLength": 1,
-            "maxLength": 32,
+            "maxLength": 32
         },
         "IntuneCD Farm SKU": {
             "type": "string",
