@@ -30,9 +30,6 @@
             "type": "string",
             "minLength": 1,
             "maxLength": 32,
-            "metadata": {
-                "description": "Must be alphanumeric and less than or equal to 32 characters. Cannot start or end with a hyphen. Cannot contain two consecutive hyphens."
-            }
         },
         "IntuneCD Farm SKU": {
             "type": "string",
@@ -43,15 +40,6 @@
                 "Standard"
             ],
             "defaultValue": "Free"
-        },
-        "IntuneCD Farm WorkerSize": {
-            "type": "string",
-            "allowedValues": [
-                "0",
-                "1",
-                "2"
-            ],
-            "defaultValue": "0"
         },
         "IntuneCD DB Location": {
             "type": "string",
@@ -97,11 +85,6 @@
         "IntuneCD DB Name": {
             "type": "string",
             "minLength": 1
-        },
-        "IntuneCD DB Collation": {
-            "type": "string",
-            "minLength": 1,
-            "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
         },
         "IntuneCD DB Edition": {
             "type": "string",
@@ -151,7 +134,7 @@
             "properties": {
                 "name": "[parameters('IntuneCD Farm Name')]",
                 "sku": "[parameters('IntuneCD Farm SKU')]",
-                "workerSize": "[parameters('IntuneCD Farm WorkerSize')]",
+                "workerSize": 0,
                 "numberOfWorkers": 1,
                 "reserved": true
             }
@@ -198,7 +181,7 @@
                 "displayName": "IntuneCD"
             },
             "properties": {
-                "collation": "[parameters('IntuneCD DB Collation')]",
+                "collation": "SQL_Latin1_General_CP1_CI_AS",
                 "edition": "[parameters('IntuneCD DB Edition')]",
                 "maxSizeBytes": "1073741824",
                 "requestedServiceObjectiveName": "[parameters('IntuneCD DB RequestedServiceObjectiveName')]"
