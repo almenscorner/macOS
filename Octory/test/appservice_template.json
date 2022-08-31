@@ -2,7 +2,7 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "IntuneCD Farm Name": {
+        "IntuneCD Instance Name": {
             "type": "string",
             "minLength": 1,
             "maxLength": 32
@@ -122,7 +122,7 @@
     "resources": [
         /* SERVER FARM */
         {
-            "name": "[parameters('IntuneCD Farm Name')]",
+            "name": "[parameters('IntuneCD Instance Name')]",
             "type": "Microsoft.Web/serverfarms",
             "location": "[resourceGroup().location]",
             "kind": "app,linux",
@@ -132,7 +132,7 @@
                 "displayName": "IntuneCD"
             },
             "properties": {
-                "name": "[parameters('IntuneCD Farm Name')]",
+                "name": "[parameters('IntuneCD Instance Name')]",
                 "sku": "[parameters('IntuneCD Farm SKU')]",
                 "workerSize": 0,
                 "numberOfWorkers": 1,
@@ -190,18 +190,18 @@
         /* WEB APP */
         {
                 "apiVersion": "2018-11-01",
-    "name": "[parameters('IntuneCD Farm Name')]",
+    "name": "[parameters('IntuneCD Instance Name')]",
     "type": "Microsoft.Web/sites",
     "location": "[resourceGroup().location]",
     "dependsOn": [
         "[resourceId('Microsoft.Sql/servers', variables('IntuneCDdbName'))]"
     ],
     "tags": {
-        "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('IntuneCD Farm Name'))]": "Resource",
+        "[concat('hidden-related:', resourceGroup().id, '/providers/Microsoft.Web/serverfarms/', parameters('IntuneCD Instance Name'))]": "Resource",
         "displayName": "IntuneCD"
     },
     "properties": {
-        "name": "[parameters('IntuneCD Farm Name')]",
+        "name": "[parameters('IntuneCD Instance Name')]",
         "siteConfig": {
             "appSettings": [
                 {
@@ -282,13 +282,13 @@
         },
         "webSocketsEnabled": true,
         "httpsOnly": true,
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('IntuneCD Farm Name'))]"
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', parameters('IntuneCD Instance Name'))]"
     }
         }
     ],
     "variables": {
         "fullyQualifiedIntuneCDdbName": "[concat(variables('IntuneCDdbName'), '/', parameters('IntuneCD DB Name'))]",
         "IntuneCDdbName": "[concat('intunecd', uniqueString(resourceGroup().id))]",
-        "URL": "[concat('https://', parameters('IntuneCD Farm Name'))]"
+        "URL": "[concat('https://', parameters('IntuneCD Instance Name'))]"
     }
 }
