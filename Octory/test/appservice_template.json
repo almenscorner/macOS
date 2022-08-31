@@ -2,6 +2,11 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "IntuneCD Farm Name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 32
+        },
         "IntuneCD Client ID": {
             "type": "string",
             "metadata": {
@@ -25,11 +30,6 @@
             "metadata": {
                 "description": "IntuneCD DevOps Project Name"
             }
-        },
-        "IntuneCD Farm Name": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 32
         },
         "IntuneCD Farm SKU": {
             "type": "string",
