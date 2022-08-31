@@ -277,7 +277,7 @@
                     "value": ""
                 }
             ],
-            "linuxFxVersion": "COMPOSE|dmVyc2lvbjogIjMuOCIKCnNlcnZpY2VzOgoKICB3ZWI6CiAgICBpbWFnZTogZ2hjci5pby9hbG1lbnNjb3JuZXIvaW50dW5lY2QtbW9uaXRvci1wcml2YXRlOm1haW4KICAgIHJlc3RhcnQ6IGFsd2F5cwogICAgY29tbWFuZDogZ3VuaWNvcm4gLS1iaW5kIDAuMC4wLjA6ODA4MCAtLXRocmVhZHMgMTAgcnVuOmFwcAogICAgZXhwb3NlOgogICAgICAtIDgwODA6ODA4MAogIAogIG5naW54OgogICAgaW1hZ2U6IGdoY3IuaW8vYWxtZW5zY29ybmVyL2ludHVuZWNkLW1vbml0b3ItcHJpdmF0ZS9uZ2lueDptYWluCiAgICByZXN0YXJ0OiBhbHdheXMKICAgIGNvbW1hbmQ6IFsiL2Jpbi9zaCIsICItYyIsICJlbnZzdWJzdCA8IC9ldGMvbmdpbngvY29uZi5kL25naW54LmNvbmYudGVtcGxhdGUgPiAvZXRjL25naW54L2NvbmYuZC9uZ2lueC5jb25mICYmIGV4ZWMgbmdpbnggLWcgJ2RhZW1vbiBvZmY7JyJdCiAgICBwb3J0czoKICAgICAgLSA4MDo4MA==",
+            "linuxFxVersion": "COMPOSE|dmVyc2lvbjogIjMuOCIKCnNlcnZpY2VzOgoKICB3ZWI6CiAgICBpbWFnZTogZ2hjci5pby9hbG1lbnNjb3JuZXIvaW50dW5lY2QtbW9uaXRvci1jbG9zZWQ6bGF0ZXN0CiAgICByZXN0YXJ0OiBhbHdheXMKICAgIGNvbW1hbmQ6IGd1bmljb3JuIC0tYmluZCAwLjAuMC4wOjgwODAgLS10aHJlYWRzIDEwIHJ1bjphcHAKICAgIGV4cG9zZToKICAgICAgLSA4MDgwOjgwODAKICAKICBuZ2lueDoKICAgIGltYWdlOiBnaGNyLmlvL2FsbWVuc2Nvcm5lci9pbnR1bmVjZC1tb25pdG9yLWNsb3NlZC9uZ2lueDpsYXRlc3QKICAgIHJlc3RhcnQ6IGFsd2F5cwogICAgY29tbWFuZDogWyIvYmluL3NoIiwgIi1jIiwgImVudnN1YnN0IDwgL2V0Yy9uZ2lueC9jb25mLmQvbmdpbnguY29uZi50ZW1wbGF0ZSA+IC9ldGMvbmdpbngvY29uZi5kL25naW54LmNvbmYgJiYgZXhlYyBuZ2lueCAtZyAnZGFlbW9uIG9mZjsnIl0KICAgIHBvcnRzOgogICAgICAtIDgwOjgw",
             "alwaysOn": false
         },
         "webSocketsEnabled": true,
