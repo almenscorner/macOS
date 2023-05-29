@@ -4,7 +4,7 @@
 #  Version: 1.0
 #  Created: 2023-05-29
 #
-#  Description: This script is used to package the Sentinel One installer for Global into a DMG, create the PLIST and import to Munki.  
+#  Description: This script is used to package the Sentinel One installer into a DMG, create the PLIST and import to Munki.  
 #  
 #  File name: SentinelOne.sh
 #
