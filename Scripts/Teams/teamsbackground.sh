@@ -84,6 +84,9 @@ process_image() {
 if [ $RUN_CHECK == true ]; then
     if [ -f "$RUN_CHECK_PATH" ]; then
         log_message "Script has already been run, exiting"
+        # Clean up
+        rm -rf "$TMPDIR"
+        
         exit 0
     else
         touch "$RUN_CHECK_PATH"
@@ -93,6 +96,9 @@ fi
 # Check that Teams actually exists
 if [ ! -d "/Applications/Microsoft Teams (work or school).app" ]; then
     log_message "Microsoft Teams is not installed"
+    # Clean up
+    rm -rf "$TMPDIR"
+
     exit 1
 fi
 
