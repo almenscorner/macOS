@@ -1,5 +1,6 @@
 [
     { "name": "Google Chrome", "icon": "", "recipe": "https://example.com/chrome-recipe" },
     { "name": "Mozilla Firefox", "icon": "", "recipe": "https://example.com/firefox-recipe" },
-    { "name": "Visual Studio Code", "icon": "", "recipe": "https://example.com/vscode-recipe" }
+    { "name": "Visual Studio Code", "icon": "", "recipe": "https://example.com/vscode-recipe" },
+    { "name": "Firefox", "icon": "", "recipe": "https://example.com/vscode-recipe" }
 ]
