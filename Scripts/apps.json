@@ -1,0 +1,5 @@
+[
+    { "name": "Google Chrome", "icon": "https://upload.wikimedia.org/wikipedia/commons/8/87/Google_Chrome_icon_%282020%29.svg", "recipe": "https://example.com/chrome-recipe" },
+    { "name": "Mozilla Firefox", "icon": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Firefox_logo%2C_2019.svg", "recipe": "https://example.com/firefox-recipe" },
+    { "name": "Visual Studio Code", "icon": "https://upload.wikimedia.org/wikipedia/commons/9/9a/Visual_Studio_Code_1.35_icon.svg", "recipe": "https://example.com/vscode-recipe" }
+]
