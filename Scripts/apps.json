@@ -12,7 +12,7 @@
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/AutoDeskFusion360.intune.recipe"
     },
     {
-        "name": "Docker",
+        "name": "Docker Desktop",
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Docker.intune.recipe"
     },
     {
@@ -72,7 +72,7 @@
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/AndroidStudio.intune.recipe"
     },
     {
-        "name": "GoogleChrome",
+        "name": "Google Chrome",
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/GoogleChrome.intune.recipe"
     },
     {
@@ -92,7 +92,7 @@
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Anki.intune.recipe"
     },
     {
-        "name": "VSCode",
+        "name": "Visual Studio Code",
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Code.intune.recipe"
     },
     {
@@ -100,7 +100,7 @@
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/AltTab.intune.recipe"
     },
     {
-        "name": "yubioath-desktop",
+        "name": "Yubico Authenticator",
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/yubioath-desktop.intune.recipe"
     },
     {
@@ -156,7 +156,7 @@
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/EscrowBuddy.intune.recipe"
     },
     {
-        "name": "VLC",
+        "name": "VLC Media Player",
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/VLC.intune.recipe"
     },
     {
@@ -176,11 +176,11 @@
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/TeamViewerQS.intune.recipe"
     },
     {
-        "name": "GitHubDesktop",
+        "name": "GitHub Desktop",
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/GitHubDesktop.intune.recipe"
     },
     {
-        "name": "Figma",
+        "name": "%NAME%",
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Figma.intune.recipe"
     },
     {
@@ -196,7 +196,7 @@
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/iTerm2.intune.recipe"
     },
     {
-        "name": "TheUnarchiver",
+        "name": "The Unarchiver",
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/TheUnarchiver.intune.recipe"
     },
     {
@@ -212,7 +212,7 @@
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/AmazonCLI.intune.recipe"
     },
     {
-        "name": "AzulZuluOpenJDK11LTS",
+        "name": "Azul Zulu OpenJDK 11 LTS",
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Azul+Zulu+OpenJDK+11+LTS.intune.recipe"
     },
     {
@@ -228,7 +228,7 @@
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Grammarly.intune.recipe"
     },
     {
-        "name": "SupportCompanion",
+        "name": "Support Companion",
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/SupportCompanion.intune.recipe"
     },
     {
@@ -252,7 +252,7 @@
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Maven.intune.recipe"
     },
     {
-        "name": "Git",
+        "name": "%NAME%",
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Git.intune.recipe"
     },
     {
@@ -260,7 +260,7 @@
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/1password.intune.recipe"
     },
     {
-        "name": "Microsoft Azure Storage Explorer",
+        "name": "%NAME%",
         "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/MicrosoftAzureStorageExplorer.intune.recipe"
     },
     {
