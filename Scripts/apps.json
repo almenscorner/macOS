@@ -1,18 +1,278 @@
 [
-    { "name": "Google Chrome", "icon": "", "recipe": "https://example.com/chrome-recipe" },
-    { "name": "Amazon Q", "icon": "", "recipe": "https://example.com/firefox-recipe" },
-    { "name": "Visual Studio Code", "icon": "", "recipe": "https://example.com/vscode-recipe" },
-    { "name": "Firefox", "icon": "", "recipe": "https://example.com/vscode-recipe" },
-    { "name": "Firefox", "icon": "", "recipe": "https://example.com/vscode-recipe" },
-    { "name": "Firefox", "icon": "", "recipe": "https://example.com/vscode-recipe" },
-    { "name": "Firefox", "icon": "", "recipe": "https://example.com/vscode-recipe" },
-    { "name": "Firefox", "icon": "", "recipe": "https://example.com/vscode-recipe" },
-    { "name": "Firefox", "icon": "", "recipe": "https://example.com/vscode-recipe" },
-    { "name": "Firefox", "icon": "", "recipe": "https://example.com/vscode-recipe" },
-    { "name": "Firefox", "icon": "", "recipe": "https://example.com/vscode-recipe" },
-    { "name": "Firefox", "icon": "", "recipe": "https://example.com/vscode-recipe" },
-    { "name": "Firefox", "icon": "", "recipe": "https://example.com/vscode-recipe" },
-    { "name": "Firefox", "icon": "", "recipe": "https://example.com/vscode-recipe" },
-    { "name": "Firefox", "icon": "", "recipe": "https://example.com/vscode-recipe" },
-    { "name": "Firefox", "icon": "", "recipe": "https://example.com/vscode-recipe" }
+    {
+        "name": "Firefox",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/FirefoxSigned.intune.recipe"
+    },
+    {
+        "name": "DB Browser for SQLite",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/DB+Browser+for+SQLite.intune.recipe"
+    },
+    {
+        "name": "AutoDesk Fusion 360",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/AutoDeskFusion360.intune.recipe"
+    },
+    {
+        "name": "Docker",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Docker.intune.recipe"
+    },
+    {
+        "name": "Remote Help",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/MicrosoftRemoteHelp.intune.recipe"
+    },
+    {
+        "name": "Bartender",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Bartender.intune.recipe"
+    },
+    {
+        "name": "Cyberduck",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Cyberduck.intune.recipe"
+    },
+    {
+        "name": "DisplayLink Manager",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/DisplayLinkManager.intune.recipe"
+    },
+    {
+        "name": "Audacity",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Audacity.intune.recipe"
+    },
+    {
+        "name": "Logi Options Plus",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/LogiOptionsPlus.intune.recipe"
+    },
+    {
+        "name": "Terraform",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Terraform.intune.recipe"
+    },
+    {
+        "name": "Amazon Q",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/AmazonQ.intune.recipe"
+    },
+    {
+        "name": "ClickShare",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/ClickShare.intune.recipe"
+    },
+    {
+        "name": "iMazing",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/iMazing.intune.recipe"
+    },
+    {
+        "name": "Caffeine",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Caffeine.intune.recipe"
+    },
+    {
+        "name": "Chef Workstation",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/ChefWorkstation.intune.recipe"
+    },
+    {
+        "name": "Google Chrome",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/GoogleChromePkg.intune.recipe"
+    },
+    {
+        "name": "Android Studio",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/AndroidStudio.intune.recipe"
+    },
+    {
+        "name": "GoogleChrome",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/GoogleChrome.intune.recipe"
+    },
+    {
+        "name": "Spotify",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Spotify.intune.recipe"
+    },
+    {
+        "name": "Tunnelblick",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Tunnelblick.intune.recipe"
+    },
+    {
+        "name": "BBEdit 15",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/BBEdit15.intune.recipe"
+    },
+    {
+        "name": "Anki",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Anki.intune.recipe"
+    },
+    {
+        "name": "VSCode",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Code.intune.recipe"
+    },
+    {
+        "name": "AltTab",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/AltTab.intune.recipe"
+    },
+    {
+        "name": "yubioath-desktop",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/yubioath-desktop.intune.recipe"
+    },
+    {
+        "name": "Elgato Stream Deck",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Elgato+Stream+Deck.intune.recipe"
+    },
+    {
+        "name": "Brave",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Brave.intune.recipe"
+    },
+    {
+        "name": "PyCharm Community Edition",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/PyCharm-CE.intune.recipe"
+    },
+    {
+        "name": "IntelliJ IDEA Ultimate Edition",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/IntelliJ-IDEA-UE.intune.recipe"
+    },
+    {
+        "name": "Webstorm",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Webstorm.intune.recipe"
+    },
+    {
+        "name": "Rider",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Rider.intune.recipe"
+    },
+    {
+        "name": "IntelliJ IDEA Community Edition",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/IntelliJ-IDEA-CE.intune.recipe"
+    },
+    {
+        "name": "PyCharm Professional Edition",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/PyCharm-PE.intune.recipe"
+    },
+    {
+        "name": "Privileges",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Privileges.intune.recipe"
+    },
+    {
+        "name": "Windows App",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/WindowsApp.intune.recipe"
+    },
+    {
+        "name": "Notion",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Notion.intune.recipe"
+    },
+    {
+        "name": "Rectangle",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Rectangle.intune.recipe"
+    },
+    {
+        "name": "Escrow Buddy",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/EscrowBuddy.intune.recipe"
+    },
+    {
+        "name": "VLC",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/VLC.intune.recipe"
+    },
+    {
+        "name": "Adobe Reader",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/AdobeReader.intune.recipe"
+    },
+    {
+        "name": "Adobe Creative Cloud",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/AdobeCreativeCloudUniversal.intune.recipe"
+    },
+    {
+        "name": "TeamViewer",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/TeamViewer.intune.recipe"
+    },
+    {
+        "name": "TeamViewer QuickSupport",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/TeamViewerQS.intune.recipe"
+    },
+    {
+        "name": "GitHubDesktop",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/GitHubDesktop.intune.recipe"
+    },
+    {
+        "name": "Figma",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Figma.intune.recipe"
+    },
+    {
+        "name": "Santa",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Santa.intune.recipe"
+    },
+    {
+        "name": "Tor",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Tor.intune.recipe"
+    },
+    {
+        "name": "iTerm2",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/iTerm2.intune.recipe"
+    },
+    {
+        "name": "TheUnarchiver",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/TheUnarchiver.intune.recipe"
+    },
+    {
+        "name": "Cloudflare WARP",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/CloudflareWARP.intune.recipe"
+    },
+    {
+        "name": "Zoom",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Zoom.intune.recipe"
+    },
+    {
+        "name": "Amazon CLI",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/AmazonCLI.intune.recipe"
+    },
+    {
+        "name": "AzulZuluOpenJDK11LTS",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Azul+Zulu+OpenJDK+11+LTS.intune.recipe"
+    },
+    {
+        "name": "Slack",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Slack.intune.recipe"
+    },
+    {
+        "name": "LibreOffice",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/LibreOffice.intune.recipe"
+    },
+    {
+        "name": "Grammarly",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Grammarly.intune.recipe"
+    },
+    {
+        "name": "SupportCompanion",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/SupportCompanion.intune.recipe"
+    },
+    {
+        "name": "Azure Data Studio",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Azure+Data+Studio.intune.recipe"
+    },
+    {
+        "name": "Arc",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Arc.intune.recipe"
+    },
+    {
+        "name": "FileZilla",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/FileZilla.intune.recipe"
+    },
+    {
+        "name": "AirParrot 3",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/AirParrot3.intune.recipe"
+    },
+    {
+        "name": "Maven",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Maven.intune.recipe"
+    },
+    {
+        "name": "Git",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/Git.intune.recipe"
+    },
+    {
+        "name": "1password",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/1password.intune.recipe"
+    },
+    {
+        "name": "Microsoft Azure Storage Explorer",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/MicrosoftAzureStorageExplorer.intune.recipe"
+    },
+    {
+        "name": "Citrix Workspace",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/CitrixWorkspace.intune.recipe"
+    },
+    {
+        "name": "UTM",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/UTM.intune.recipe"
+    },
+    {
+        "name": "KeePassXC",
+        "recipe_url": "https://github.com/autopkg/almenscorner-recipes/blob/main/KeePassXC.intune.recipe"
+    }
 ]
