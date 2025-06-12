@@ -1,18 +1,35 @@
+#!/usr/bin/env python3
+
+"""
+This script interacts with the Apple Business Manager API to retrieve device and organization information.
+It uses JWT for authentication and caches the access token to avoid frequent re-authentication.
+It supports pagination for API responses and can handle both GET and POST requests.
+It is designed to work with both Apple Business Manager (ABM) and Apple School Manager (ASM) by changing the TYPE variable.
+It requires the `authlib`, `requests`, and `pycryptodome` libraries for JWT creation and HTTP requests.
+It is important to ensure that the private key file, client ID, team ID, and key ID are correctly set for your Apple Business Manager or Apple School Manager account.
+
+Written by Tobias Almén
+"""
+
 import datetime as dt
 import uuid
+import json
 import requests
+
+from time import sleep, time
+from typing import Literal, Optional, Tuple
+from pprint import pprint
 from authlib.jose import jwt
 from Crypto.PublicKey import ECC
-from typing import Literal, Optional
-from pprint import pprint
 
 TYPE = "business"  # Defaults to ABM, set to "school" for ASM
 LIMIT = 100  # Max number of items per page for Apple Business Manager API
 API_URL = f"https://api-{TYPE}.apple.com/v1"
-PRIVATE_KEY_FILE = "private-key.pem"
+PRIVATE_KEY_FILE = "/path/to/private-key.pem"
 CLIENT_ID = ""
 TEAM_ID = ""
 KEY_ID = ""
+TOKEN_CACHE_FILE = "/path/to/token_cache"
 
 
 def create_jwt(
@@ -51,6 +68,38 @@ def create_jwt(
     return jwt_token
 
 
+def cache_token(
+    token: str, expires_in: int, cache_file: str = TOKEN_CACHE_FILE
+) -> None:
+    """Cache the access token to a file.
+
+    Args:
+        token (str): Access token to cache.
+        cache_file (str): File path to store the cached token.
+    """
+    expires_at = time.time() + int(expires_in * 0.75)  # add safety margin
+    cache_data = {"token": token, "expires_at": expires_at}
+    with open(cache_file, "w", encoding="UTF8") as file:
+        json.dump(cache_data, file)
+
+
+def load_cached_token(
+    cache_file: str = TOKEN_CACHE_FILE,
+) -> Optional[Tuple[str, float]]:
+    """Load the cached token and expiration time."""
+    try:
+        with open(cache_file, "r", encoding="UTF8") as file:
+            data = json.load(file)
+            return data["token"], data["expires_at"]
+    except (FileNotFoundError, KeyError, json.JSONDecodeError):
+        return None
+
+
+def is_token_valid(expires_at: float) -> bool:
+    """Return True if current time is before the expiration timestamp."""
+    return time.time() < expires_at
+
+
 def request_token(client_assertion: str, client_id: str) -> str:
     """Request an access token from Apple Business Manager API.
 
@@ -61,6 +110,20 @@ def request_token(client_assertion: str, client_id: str) -> str:
     Returns:
         str: Access token as a string.
     """
+    # Check if a cached token exists
+    cached = load_cached_token()
+    print("Checking for cached token...")
+    if cached:
+        print("Cached token found.")
+        cached_token, expiration = cached
+        if is_token_valid(expiration):
+            print("Cached token is valid. Using cached token.")
+            print(f"Token expires at: {dt.datetime.fromtimestamp(expiration)}")
+            return cached_token
+        else:
+            print("Cached token expired. Requesting a new token.")
+
+    print("Requesting new token.")
     token_url = "https://account.apple.com/auth/oauth2/token"
     data = {
         "grant_type": "client_credentials",
@@ -72,7 +135,16 @@ def request_token(client_assertion: str, client_id: str) -> str:
 
     response = requests.post(token_url, data=data, timeout=10)
     response.raise_for_status()
-    return response.json().get("access_token")
+
+    response_data = response.json()
+    token = response_data.get("access_token")
+    expires_in = response_data.get("expires_in")
+
+    if token and expires_in:
+        cache_token(token, expires_in)
+        return token
+    else:
+        raise RuntimeError("Failed to retrieve token or expiration from response.")
 
 
 def make_api_request(
@@ -118,6 +190,7 @@ def make_api_request(
                 url, headers=headers, timeout=120, params=query_params
             )
             retry_count += 1
+            sleep(5)
 
         response.raise_for_status()
         data = response.json()
