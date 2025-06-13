@@ -11,25 +11,55 @@ It is important to ensure that the private key file, client ID, team ID, and key
 Written by Tobias Almén
 """
 
+import os
 import datetime as dt
 import uuid
 import json
 import requests
 
+from argparse import ArgumentParser
 from time import sleep, time
 from typing import Literal, Optional, Tuple
 from pprint import pprint
 from authlib.jose import jwt
 from Crypto.PublicKey import ECC
 
-TYPE = "business"  # Defaults to ABM, set to "school" for ASM
-LIMIT = 100  # Max number of items per page for Apple Business Manager API
+TOKEN_CACHE_FILE = ".token_cache"
+
+PRIVATE_KEY_FILE = os.environ.get("PRIVATE_KEY_FILE")
+CLIENT_ID = os.environ.get("CLIENT_ID")
+TEAM_ID = os.environ.get("TEAM_ID")
+KEY_ID = os.environ.get("KEY_ID")
+
+if not all([PRIVATE_KEY_FILE, CLIENT_ID, TEAM_ID, KEY_ID]):
+    raise ValueError(
+        "Please set PRIVATE_KEY_FILE, CLIENT_ID, TEAM_ID, and KEY_ID variables."
+    )
+
+
+def parse_args() -> ArgumentParser:
+    """Parse command line arguments."""
+    parser = ArgumentParser(description="Apple Business Manager API Client")
+    parser.add_argument(
+        "--type",
+        choices=["business", "school"],
+        default="business",
+        help="Type of Apple service to use (business or school). Defaults to 'business'.",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=100,
+        help="Maximum number of items per page. Defaults to 100.",
+    )
+    return parser.parse_args()
+
+
+args = parse_args()
+
+TYPE = args.type
+LIMIT = args.limit
 API_URL = f"https://api-{TYPE}.apple.com/v1"
-PRIVATE_KEY_FILE = "/path/to/private-key.pem"
-CLIENT_ID = ""
-TEAM_ID = ""
-KEY_ID = ""
-TOKEN_CACHE_FILE = "/path/to/token_cache"
 
 
 def create_jwt(
@@ -77,7 +107,7 @@ def cache_token(
         token (str): Access token to cache.
         cache_file (str): File path to store the cached token.
     """
-    expires_at = time.time() + int(expires_in * 0.75)  # add safety margin
+    expires_at = time() + int(expires_in * 0.75)  # add safety margin
     cache_data = {"token": token, "expires_at": expires_at}
     with open(cache_file, "w", encoding="UTF8") as file:
         json.dump(cache_data, file)
@@ -97,7 +127,7 @@ def load_cached_token(
 
 def is_token_valid(expires_at: float) -> bool:
     """Return True if current time is before the expiration timestamp."""
-    return time.time() < expires_at
+    return time() < expires_at
 
 
 def request_token(client_assertion: str, client_id: str) -> str:
